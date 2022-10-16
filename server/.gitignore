@@ -175,3 +175,6 @@ sketch
 
 # Ignore code-workspaces
 *.code-workspace
+
+# Ignore config keys
+keys.js
