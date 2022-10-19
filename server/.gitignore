@@ -177,4 +177,4 @@ sketch
 *.code-workspace
 
 # Ignore config keys
-keys.js
+dev.js
