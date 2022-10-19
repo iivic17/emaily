@@ -14,6 +14,17 @@ passport.deserializeUser((id, done) => {
 	User.findById(id).then(user => done(null, user));
 });
 
+const findOrCreate = async (id, done) => {
+	const existingUser = await User.findOne(id);
+
+	if (existingUser) {
+		return done(null, existingUser);
+	}
+
+	const user = await new User(id).save();
+	done(null, user);
+};
+
 passport.use(
 	new GoogleStrategy(
 		{
@@ -22,22 +33,8 @@ passport.use(
 			clientSecret: keys.google.clientSecret,
 			callbackURL: '/auth/google/callback',
 		},
-		(accessToken, refreshToken, profile, done) => {
-			User.findOne({
-				googleId: profile.id,
-			}).then(existingUser => {
-				if (existingUser) {
-					done(null, existingUser);
-				}
-				if (!existingUser) {
-					new User({
-						googleId: profile.id,
-					})
-						.save()
-						.then(user => done(null, user));
-				}
-			});
-		}
+		(accessToken, refreshToken, profile, done) =>
+			findOrCreate({ googleId: profile.id }, done)
 	)
 );
 
@@ -49,21 +46,7 @@ passport.use(
 			clientSecret: keys.facebook.appSecret,
 			callbackURL: '/auth/facebook/callback',
 		},
-		(accessToken, refreshToken, profile, done) => {
-			User.findOne({
-				facebookId: profile.id,
-			}).then(existingUser => {
-				if (existingUser) {
-					done(null, existingUser);
-				}
-				if (!existingUser) {
-					new User({
-						facebookId: profile.id,
-					})
-						.save()
-						.then(user => done(null, user));
-				}
-			});
-		}
+		(accessToken, refreshToken, profile, done) =>
+			findOrCreate({ facebookId: profile.id }, done)
 	)
 );
