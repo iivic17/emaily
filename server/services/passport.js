@@ -17,6 +17,7 @@ passport.deserializeUser((id, done) => {
 passport.use(
 	new GoogleStrategy(
 		{
+			proxy: true,
 			clientID: keys.google.clientID,
 			clientSecret: keys.google.clientSecret,
 			callbackURL: '/auth/google/callback',
@@ -43,6 +44,7 @@ passport.use(
 passport.use(
 	new FacebookStrategy(
 		{
+			proxy: true,
 			clientID: keys.facebook.appID,
 			clientSecret: keys.facebook.appSecret,
 			callbackURL: '/auth/facebook/callback',
