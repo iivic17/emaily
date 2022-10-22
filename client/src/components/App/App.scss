@@ -8,7 +8,7 @@ html {
 	min-height: 100vh;
 
 	background-color: #fff;
-	color: #111;
+	color: #3d3d3d;
 
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -33,7 +33,9 @@ html {
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
+}
 
+.bold {
 	font-weight: 700;
 }
 
@@ -41,7 +43,7 @@ html {
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
-	padding: 2.4rem 1.6rem;
+	padding: 2.4rem 2rem;
 	border-radius: 2.4rem;
 
 	position: relative;
@@ -50,7 +52,6 @@ html {
 
 	font-weight: 300;
 	font-size: 1.6rem;
-	color: #7c7c7c;
 
 	margin: 0.4rem;
 
@@ -71,5 +72,5 @@ html {
 }
 
 .button:hover {
-	background-color: rgb(255, 255, 255, 0.95);
+	background-color: rgb(255, 255, 255, 0.92);
 }

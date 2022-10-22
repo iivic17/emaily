@@ -1,0 +1,14 @@
+.landing-text-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.landing-text-box > h2 {
+	font-size: 3.2rem;
+}
+
+.landing-text-box > p {
+	font-size: 1.8rem;
+}

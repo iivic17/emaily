@@ -11,15 +11,17 @@ class Header extends Component {
 				return (
 					<div className='sign-in-group'>
 						<button className='button'>
-							Sign in with <span className='gradient-text'>Google</span>
+							Sign in with{' '}
+							<span className='gradient-text bold'>Google</span>
 						</button>
 						<button className='button'>
-							Sign in with <span className='gradient-text'>Facebook</span>
+							Sign in with{' '}
+							<span className='gradient-text bold'>Facebook</span>
 						</button>
 					</div>
 				);
 			default:
-				return <a href='/api/logout'>Sign out</a>;
+				return <button className='button'>Sign out</button>;
 		}
 	}
 
