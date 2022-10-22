@@ -6,11 +6,20 @@ class Header extends Component {
 	renderContent() {
 		switch (this.props.auth.loggedIn) {
 			case null:
-				return 'Still deciding';
+				return;
 			case false:
-				return 'Not logged in';
+				return (
+					<div className='sign-in-group'>
+						<button className='button'>
+							Sign in with <span className='gradient-text'>Google</span>
+						</button>
+						<button className='button'>
+							Sign in with <span className='gradient-text'>Facebook</span>
+						</button>
+					</div>
+				);
 			default:
-				return 'Logged in';
+				return <a href='/api/logout'>Sign out</a>;
 		}
 	}
 
@@ -18,15 +27,7 @@ class Header extends Component {
 		return (
 			<nav className='header'>
 				<h1 className='logo gradient-text'>Emaily</h1>
-				<span>{this.renderContent()}</span>
-				<div className='sign-in-group'>
-					<button className='button'>
-						Sign in with <span className='gradient-text'>Google</span>
-					</button>
-					<button className='button'>
-						Sign in with <span className='gradient-text'>Facebook</span>
-					</button>
-				</div>
+				{this.renderContent()}
 			</nav>
 		);
 	}
