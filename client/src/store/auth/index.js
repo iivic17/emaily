@@ -1,10 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { axios } from 'axios';
 
-const initialState = { value: 0 };
+const fetchUser = createAsyncThunk('bundles/myAsyncInSlice', () =>
+	axios
+		.get('/api_current_user')
+		.then(res => res)
+		.catch(err => err)
+);
 
 const authSlice = createSlice({
 	name: 'auth',
-	initialState,
+	initialState: { value: 0 },
 	reducers: {
 		increment(state) {
 			state.value++;
@@ -15,6 +21,10 @@ const authSlice = createSlice({
 		incrementByAmount(state, action) {
 			state.value += action.payload;
 		},
+	},
+	extraReducers: {
+		[fetchUser.fulfilled]: (state, action) => {},
+		[fetchUser.rejected]: (state, action) => {},
 	},
 });
 
