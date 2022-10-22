@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './../Header';
 import './App.scss';
+import { fetchUser } from './../../store/auth';
+import { connect } from 'react-redux';
 
 const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
 const Landing = () => <h2>Landing</h2>;
 
 class App extends Component {
+	componentDidMount() {
+		this.props.fetchUser();
+	}
+
 	render() {
 		return (
 			<div>
@@ -24,4 +30,10 @@ class App extends Component {
 	}
 }
 
-export default App;
+const mapStateToProps = state => ({
+	state,
+});
+
+const mapDispatchToProps = { fetchUser };
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

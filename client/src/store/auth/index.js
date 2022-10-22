@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const fetchUser = createAsyncThunk('bundles/myAsyncInSlice', () =>
+export const fetchUser = createAsyncThunk('bundles/myAsyncInSlice', () =>
 	axios
-		.get('/api_current_user')
+		.get('/api/current_user')
 		.then(res => res)
 		.catch(err => err)
 );
@@ -23,7 +23,9 @@ const authSlice = createSlice({
 		},
 	},
 	extraReducers: {
-		[fetchUser.fulfilled]: (state, action) => {},
+		[fetchUser.fulfilled]: (state, action) => {
+			console.log(action.payload.data.facebookId);
+		},
 		[fetchUser.rejected]: (state, action) => {},
 	},
 });
