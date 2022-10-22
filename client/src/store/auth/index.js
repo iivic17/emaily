@@ -1,12 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchUser = createAsyncThunk('bundles/myAsyncInSlice', () =>
-	axios
-		.get('/api/current_user')
-		.then(res => res)
-		.catch(err => err)
-);
+export const fetchUser = createAsyncThunk('auth/fetchUser', async () => {
+	return await axios.get('/api/current_user');
+});
 
 const authSlice = createSlice({
 	name: 'auth',
@@ -22,11 +19,14 @@ const authSlice = createSlice({
 			state.value += action.payload;
 		},
 	},
-	extraReducers: {
-		[fetchUser.fulfilled]: (state, action) => {
+	extraReducers: builder => {
+		builder.addCase(fetchUser.pending, (state, action) => {});
+
+		builder.addCase(fetchUser.fulfilled, (state, action) => {
 			console.log(action.payload.data.facebookId);
-		},
-		[fetchUser.rejected]: (state, action) => {},
+		});
+
+		builder.addCase(fetchUser.rejected, (state, action) => {});
 	},
 });
 

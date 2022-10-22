@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './../Header';
 import './App.scss';
-import { fetchUser } from './../../store/auth';
+import * as actions from './../../store/auth';
 import { connect } from 'react-redux';
 
 const Dashboard = () => <h2>Dashboard</h2>;
@@ -34,6 +34,4 @@ const mapStateToProps = state => ({
 	state,
 });
 
-const mapDispatchToProps = { fetchUser };
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, actions)(App);
