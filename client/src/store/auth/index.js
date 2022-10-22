@@ -9,7 +9,7 @@ export const fetchUser = createAsyncThunk('auth/fetchUser', async () => {
 const authSlice = createSlice({
 	name: 'auth',
 	initialState: {
-		loggedIn: false,
+		loggedIn: null,
 		googleId: null,
 		facebookId: null,
 		id: null,
