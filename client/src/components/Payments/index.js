@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import { connect } from 'react-redux';
+import * as actions from './../../store/user';
 
 class Payments extends Component {
-	debugger;
+	onTokenCallback(token) {
+		this.props.handleToken(token);
+	}
 
 	render() {
 		return (
@@ -11,7 +15,7 @@ class Payments extends Component {
 				description='Collect feedback from your users'
 				image='/logo192.png'
 				amount={500}
-				token={token => console.log(token)}
+				token={token => this.onTokenCallback(token)}
 				panelLabel='Buy (5) credits for'
 				stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}>
 				<button className='button'>
@@ -22,4 +26,4 @@ class Payments extends Component {
 	}
 }
 
-export default Payments;
+export default connect(null, actions)(Payments);

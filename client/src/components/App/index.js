@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './../Header';
 import Landing from './../Landing';
 import './App.scss';
-import * as actions from './../../store/auth';
+import * as actions from './../../store/user';
 import { connect } from 'react-redux';
 
 const Dashboard = () => <h2>Dashboard</h2>;
@@ -15,7 +15,7 @@ class App extends Component {
 	}
 
 	render() {
-		console.log('LOGGED_IN', this.props.state.auth.loggedIn);
+		console.log('LOGGED_IN', this.props.state.user.loggedIn);
 
 		return (
 			<div>

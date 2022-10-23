@@ -18,13 +18,13 @@ class Header extends Component {
 	}
 
 	onLogo() {
-		this.props.auth.loggedIn
+		this.props.user.loggedIn
 			? this.props.history.push('/surveys')
 			: this.props.history.push('/');
 	}
 
 	renderContent() {
-		switch (this.props.auth.loggedIn) {
+		switch (this.props.user.loggedIn) {
 			case null:
 				return;
 			case false:
@@ -87,8 +87,8 @@ class Header extends Component {
 	}
 }
 
-const mapStateToProps = ({ auth }) => ({
-	auth,
+const mapStateToProps = ({ user }) => ({
+	user,
 });
 
 export default withRouter(connect(mapStateToProps, null)(Header));

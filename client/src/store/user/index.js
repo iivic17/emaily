@@ -1,13 +1,23 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchUser = createAsyncThunk('auth/fetchUser', async () => {
+export const fetchUser = createAsyncThunk('user/fetchUser', async data => {
+	console.log('Here', data);
+	if (data) return data;
 	const res = await axios.get('/api/current_user');
 	return res.data;
 });
 
-const authSlice = createSlice({
-	name: 'auth',
+export const handleToken = createAsyncThunk(
+	'user/handleToken',
+	async (token, { dispatch }) => {
+		const res = await axios.post('/api/stripe', token);
+		dispatch(fetchUser(res));
+	}
+);
+
+const userSlice = createSlice({
+	name: 'user',
 	initialState: {
 		loggedIn: null,
 		googleId: null,
@@ -33,4 +43,4 @@ const authSlice = createSlice({
 	},
 });
 
-export default authSlice.reducer;
+export default userSlice.reducer;
