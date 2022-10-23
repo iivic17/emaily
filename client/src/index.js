@@ -12,7 +12,3 @@ root.render(
 	</Provider>
 	// </React.StrictMode>
 );
-
-console.log('Stripe key is', process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
-console.log('Environment is', process.env.NODE_ENV);
-console.log('Environment is', process.env);

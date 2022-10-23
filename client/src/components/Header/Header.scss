@@ -19,3 +19,41 @@
 	align-items: center;
 	justify-content: space-between;
 }
+
+.header-content {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 8rem;
+}
+
+.credits-group {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2.4rem;
+}
+
+.credits-value-group {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.credits {
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.3rem;
+	font-weight: 700;
+}
+
+.credits-amount {
+	font-size: 2rem;
+}
+
+.credits-icon {
+	width: 3rem;
+	height: 3rem;
+}

@@ -12,7 +12,7 @@ class Payments extends Component {
 				image='/logo192.png'
 				amount={500}
 				token={token => console.log(token)}
-				panelLabel='Buy credits'
+				panelLabel='Buy (5) credits for'
 				stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}>
 				<button className='button'>
 					Buy <span className='gradient-text bold uppercase'>credits</span>

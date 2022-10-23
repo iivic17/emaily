@@ -50,11 +50,26 @@ class Header extends Component {
 				);
 			default:
 				return (
-					<div className='button-group'>
-						<Payments />
-						<button className='button' onClick={this.onSignOut.bind(this)}>
-							Sign out
-						</button>
+					<div className='header-content'>
+						<div className='credits-group'>
+							<span className='credits gradient-text'>Credits</span>
+							<div className='credits-value-group'>
+								<span className='credits-amount bold'>0</span>
+								<img
+									src='/coin.png'
+									alt='credits-icon'
+									className='credits-icon'
+								/>
+							</div>
+						</div>
+						<div className='button-group'>
+							<Payments />
+							<button
+								className='button'
+								onClick={this.onSignOut.bind(this)}>
+								Sign out
+							</button>
+						</div>
 					</div>
 				);
 		}

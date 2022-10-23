@@ -14,19 +14,11 @@ const authSlice = createSlice({
 		facebookId: null,
 		id: null,
 	},
-	reducers: {
-		// increment(state) {
-		// 	state.value++;
-		// },
-		// decrement(state) {
-		// 	state.value--;
-		// },
-		// incrementByAmount(state, action) {
-		// 	state.value += action.payload;
-		// },
-	},
+	reducers: {},
 	extraReducers: builder => {
-		builder.addCase(fetchUser.pending, (state, action) => {});
+		builder.addCase(fetchUser.pending, (state, action) => {
+			state.loggedIn = null;
+		});
 
 		builder.addCase(fetchUser.fulfilled, (state, action) => {
 			state.loggedIn = Boolean(action.payload);
@@ -35,9 +27,10 @@ const authSlice = createSlice({
 			state.id = action.payload._id;
 		});
 
-		builder.addCase(fetchUser.rejected, (state, action) => {});
+		builder.addCase(fetchUser.rejected, (state, action) => {
+			state.loggedIn = false;
+		});
 	},
 });
 
-// export const { increment, decrement, incrementByAmount } = authSlice.actions;
 export default authSlice.reducer;

@@ -15,7 +15,7 @@ class App extends Component {
 	}
 
 	render() {
-		console.log(this.props.state);
+		console.log('LOGGED_IN', this.props.state.auth.loggedIn);
 
 		return (
 			<div>
