@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Header.scss';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Payments from './../Payments';
 
 class Header extends Component {
 	onSignInWithGoogle() {
@@ -28,19 +29,19 @@ class Header extends Component {
 				return;
 			case false:
 				return (
-					<div className='sign-in-group'>
+					<div className='button-group'>
 						<button
 							className='button'
 							onClick={this.onSignInWithGoogle.bind(this)}>
 							Sign in with{' '}
-							<span className='gradient-text bold'>Google</span>
+							<span className='gradient-text bold uppercase'>Google</span>
 						</button>
 						<button
 							className='button'
 							onClick={this.onSignInWithFacebook.bind(this)}>
 							Sign in with{' '}
 							<span
-								className='gradient-text bold'
+								className='gradient-text bold uppercase'
 								onClick={this.onSignInWithFacebook.bind(this)}>
 								Facebook
 							</span>
@@ -49,9 +50,12 @@ class Header extends Component {
 				);
 			default:
 				return (
-					<button className='button' onClick={this.onSignOut.bind(this)}>
-						Sign out
-					</button>
+					<div className='button-group'>
+						<Payments />
+						<button className='button' onClick={this.onSignOut.bind(this)}>
+							Sign out
+						</button>
+					</div>
 				);
 		}
 	}

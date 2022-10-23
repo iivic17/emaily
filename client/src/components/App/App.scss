@@ -24,8 +24,14 @@ html {
 }
 
 .container {
-	max-width: 160rem;
+	max-width: 130em;
 	margin: 0 auto;
+
+	padding: 2em 0;
+
+	@media screen and (max-width: 134em) {
+		padding: 2em 4em;
+	}
 }
 
 .gradient-text {
@@ -37,6 +43,10 @@ html {
 
 .bold {
 	font-weight: 700;
+}
+
+.uppercase {
+	text-transform: uppercase;
 }
 
 .button {
