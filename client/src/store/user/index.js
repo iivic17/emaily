@@ -36,7 +36,6 @@ const userSlice = createSlice({
 			state.facebookId = action.payload.facebookId || null;
 			state.id = action.payload._id;
 			state.credits = action.payload.credits;
-			console.log('CREDITS', state.credits);
 		});
 
 		builder.addCase(fetchUser.rejected, (state, action) => {
