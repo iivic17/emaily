@@ -14,4 +14,8 @@ module.exports = {
 		appSecret: process.env.FACEBOOK_APP_SECRET,
 	},
 	port: process.env.PORT,
+	stripe: {
+		publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+		secretKey: process.env.STRIPE_SECRET_KEY,
+	},
 };

@@ -178,3 +178,4 @@ sketch
 
 # Ignore config keys
 dev.js
+.env*
