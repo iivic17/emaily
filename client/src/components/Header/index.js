@@ -54,7 +54,9 @@ class Header extends Component {
 						<div className='credits-group'>
 							<span className='credits gradient-text'>Credits</span>
 							<div className='credits-value-group'>
-								<span className='credits-amount bold'>0</span>
+								<span className='credits-amount bold'>
+									{this.props.user.credits}
+								</span>
 								<img
 									src='/coin.png'
 									alt='credits-icon'

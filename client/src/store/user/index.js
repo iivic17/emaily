@@ -1,9 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchUser = createAsyncThunk('user/fetchUser', async data => {
-	console.log('Here', data);
-	if (data) return data;
+export const fetchUser = createAsyncThunk('user/fetchUser', async preloadedRes => {
+	if (preloadedRes) return preloadedRes.data;
 	const res = await axios.get('/api/current_user');
 	return res.data;
 });
@@ -23,6 +22,7 @@ const userSlice = createSlice({
 		googleId: null,
 		facebookId: null,
 		id: null,
+		credits: 0,
 	},
 	reducers: {},
 	extraReducers: builder => {
@@ -35,6 +35,8 @@ const userSlice = createSlice({
 			state.googleId = action.payload.googleId || null;
 			state.facebookId = action.payload.facebookId || null;
 			state.id = action.payload._id;
+			state.credits = action.payload.credits;
+			console.log('CREDITS', state.credits);
 		});
 
 		builder.addCase(fetchUser.rejected, (state, action) => {
