@@ -34,8 +34,8 @@ const userSlice = createSlice({
 			state.loggedIn = Boolean(action.payload);
 			state.googleId = action.payload.googleId || null;
 			state.facebookId = action.payload.facebookId || null;
-			state.id = action.payload._id;
-			state.credits = action.payload.credits;
+			state.id = action.payload._id || null;
+			state.credits = action.payload.credits || 0;
 		});
 
 		builder.addCase(fetchUser.rejected, (state, action) => {
