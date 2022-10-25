@@ -3,6 +3,7 @@ import './Header.scss';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Payments from './../Payments';
+import Loader from './../Loader';
 
 class Header extends Component {
 	onSignInWithGoogle() {
@@ -21,6 +22,14 @@ class Header extends Component {
 		this.props.user.loggedIn
 			? this.props.history.push('/surveys')
 			: this.props.history.push('/');
+	}
+
+	renderCreditsAmount() {
+		return this.props.user.credits.loading ? (
+			<Loader />
+		) : (
+			this.props.user.credits.amount
+		);
 	}
 
 	renderContent() {
@@ -55,7 +64,7 @@ class Header extends Component {
 							<span className='credits gradient-text'>Credits</span>
 							<div className='credits-value-group'>
 								<span className='credits-amount bold'>
-									{this.props.user.credits}
+									{this.renderCreditsAmount()}
 								</span>
 								<img
 									src='/coin.png'

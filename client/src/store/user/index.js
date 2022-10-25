@@ -10,6 +10,9 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async preloadedRes =
 export const handleToken = createAsyncThunk(
 	'user/handleToken',
 	async (token, { dispatch }) => {
+		const { updatingCredits } = userSlice.actions;
+		dispatch(updatingCredits());
+
 		const res = await axios.post('/api/stripe', token);
 		dispatch(fetchUser(res));
 	}
@@ -22,9 +25,16 @@ const userSlice = createSlice({
 		googleId: null,
 		facebookId: null,
 		id: null,
-		credits: 0,
+		credits: {
+			loading: false,
+			amount: 0,
+		},
 	},
-	reducers: {},
+	reducers: {
+		updatingCredits: state => {
+			state.credits.loading = true;
+		},
+	},
 	extraReducers: builder => {
 		builder.addCase(fetchUser.pending, (state, action) => {
 			state.loggedIn = null;
@@ -35,11 +45,13 @@ const userSlice = createSlice({
 			state.googleId = action.payload.googleId || null;
 			state.facebookId = action.payload.facebookId || null;
 			state.id = action.payload._id || null;
-			state.credits = action.payload.credits || 0;
+			state.credits.amount = action.payload.credits || 0;
+			state.credits.loading = false;
 		});
 
 		builder.addCase(fetchUser.rejected, (state, action) => {
 			state.loggedIn = false;
+			state.credits.loading = false;
 		});
 	},
 });
