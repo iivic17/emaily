@@ -7,15 +7,15 @@ import Loader from './../Loader';
 
 class Header extends Component {
 	onSignInWithGoogle() {
-		window.location.replace('/auth/google');
+		window.location.assign('/auth/google');
 	}
 
 	onSignInWithFacebook() {
-		window.location.replace('/auth/facebook');
+		window.location.assign('/auth/facebook');
 	}
 
 	onSignOut() {
-		window.location.replace('/api/logout');
+		window.location.assign('/api/logout');
 	}
 
 	onLogo() {
