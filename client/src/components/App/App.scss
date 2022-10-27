@@ -84,3 +84,23 @@ html {
 .button:hover {
 	background-color: rgb(255, 255, 255, 0.92);
 }
+
+.button-floating {
+	position: absolute;
+	bottom: 8rem;
+	right: 8rem;
+}
+
+.button-circle {
+	width: 8rem;
+	height: 8rem;
+	border-radius: 50%;
+}
+
+.button-circle::after {
+	border-radius: 50%;
+	width: calc(100% + 1.2rem);
+	height: calc(100% + 1.2rem);
+	top: -0.6rem;
+	left: -0.6rem;
+}
