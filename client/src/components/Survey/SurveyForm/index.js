@@ -1,6 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
+import { validateEmail } from './../../../utils/validateEmail';
+
+import './SurveyForm.scss';
 
 const SurveyForm = () => {
 	const {
@@ -15,44 +18,131 @@ const SurveyForm = () => {
 			emailBody: '',
 			recipientList: '',
 		},
-		delayError: 300,
 	});
 	const onSubmit = data => {
 		console.log(data);
 	};
 
-	console.log(errors);
-
 	return (
-		<form onSubmit={handleSubmit(onSubmit)}>
+		<form onSubmit={handleSubmit(onSubmit)} className='survey-form'>
 			{/* Survey Subject */}
-			<input
-				{...register('surveySubject', {
-					required: 'Survey subject is required.',
-				})}
-				type='text'
-			/>
-			<ErrorMessage errors={errors} name='surveySubject' />
+			<div className='survey-form-item'>
+				<label
+					className='survey-form-label gradient-text uppercase'
+					htmlFor='surveySubject'>
+					Survey Subject
+				</label>
+				<div className='survey-form-input-box'>
+					<input
+						{...register('surveySubject', {
+							required: 'Survey subject is required',
+						})}
+						type='text'
+						className='input'
+						placeholder={errors.surveySubject ? '' : 'Enter email subject...'}
+						name='surveySubject'
+						id='surveySubject'
+					/>
+					<ErrorMessage
+						errors={errors}
+						name='surveySubject'
+						render={({ message }) => (
+							<span className='survey-form-error-message'>{message}</span>
+						)}
+					/>
+				</div>
+			</div>
 
 			{/* Survey Title */}
-			<input {...register('surveyTitle', { required: true })} type='text' />
-			<ErrorMessage errors={errors} name='surveyTitle' />
+			<div className='survey-form-item'>
+				<label
+					className='survey-form-label gradient-text uppercase'
+					htmlFor='surveyTitle'>
+					Survey Title
+				</label>
+				<div className='survey-form-input-box'>
+					<input
+						{...register('surveyTitle', {
+							required: 'Survey title is required',
+						})}
+						type='text'
+						className='input'
+						placeholder={errors.surveyTitle ? '' : 'Enter email title...'}
+						name='surveyTitle'
+						id='surveyTitle'
+					/>
+					<ErrorMessage
+						errors={errors}
+						name='surveyTitle'
+						render={({ message }) => (
+							<span className='survey-form-error-message'>{message}</span>
+						)}
+					/>
+				</div>
+			</div>
 
 			{/* Email Body */}
-			<input {...register('emailBody', { required: true })} type='text' />
-			<ErrorMessage errors={errors} name='emailBody' />
+			<div className='survey-form-item'>
+				<label
+					className='survey-form-label gradient-text uppercase'
+					htmlFor='emailBody'>
+					Email Body
+				</label>
+				<div className='survey-form-input-box'>
+					<input
+						{...register('emailBody', {
+							required: 'Email body is required',
+						})}
+						type='text'
+						className='input'
+						placeholder={errors.emailBody ? '' : 'Enter content of email...'}
+						name='emailBody'
+						id='emailBody'
+					/>
+					<ErrorMessage
+						errors={errors}
+						name='emailBody'
+						render={({ message }) => (
+							<span className='survey-form-error-message'>{message}</span>
+						)}
+					/>
+				</div>
+			</div>
 
 			{/* Recipient List */}
-			<input
-				{...register('recipientList', {
-					required: true,
-					validate: false,
-				})}
-				type='text'
-			/>
-			<ErrorMessage errors={errors} name='recipientList' />
+			<div className='survey-form-item'>
+				<label
+					className='survey-form-label gradient-text uppercase'
+					htmlFor='recipientList'>
+					Recipient List
+				</label>
+				<div className='survey-form-input-box'>
+					<input
+						{...register('recipientList', {
+							required: 'Recipient list is required',
+							validate: recipients => validateEmail(recipients),
+						})}
+						type='text'
+						className='input'
+						placeholder={
+							errors.recipientList
+								? ''
+								: 'Enter recipients separated by comma...'
+						}
+						name='recipientList'
+						id='recipientList'
+					/>
+					<ErrorMessage
+						errors={errors}
+						name='recipientList'
+						render={({ message }) => (
+							<span className='survey-form-error-message'>{message}</span>
+						)}
+					/>
+				</div>
+			</div>
 
-			<button className='button' type='submit'>
+			<button className='button button-full-width survey-form-button' type='submit'>
 				Next
 			</button>
 		</form>

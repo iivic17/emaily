@@ -39,6 +39,7 @@ html {
 	-webkit-background-clip: text;
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
+	width: fit-content;
 }
 
 .bold {
@@ -103,4 +104,19 @@ html {
 	height: calc(100% + 1.2rem);
 	top: -0.6rem;
 	left: -0.6rem;
+}
+
+.button-full-width {
+	width: 100%;
+}
+
+.input {
+	padding: 2.4rem 2rem;
+	border-radius: 2.4rem;
+	width: 100%;
+	border: none;
+	background-color: #ededed;
+
+	font-size: 1.6rem;
+	letter-spacing: 1px;
 }
