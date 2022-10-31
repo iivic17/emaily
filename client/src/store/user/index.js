@@ -55,5 +55,5 @@ const userSlice = createSlice({
 		});
 	},
 });
-
+export const { loadCredits } = userSlice.actions;
 export default userSlice.reducer;

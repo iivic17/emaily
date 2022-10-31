@@ -2,10 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.scss';
 
+import { useDispatch } from 'react-redux';
+import { clearForm } from './../../store/newForm';
+
 const Dashboard = () => {
+	const dispatch = useDispatch();
+
+	const handleNewSurveyClicked = () => {
+		dispatch(clearForm());
+	};
+
 	return (
 		<div>
-			<Link to='/surveys/new'>
+			<Link to='/surveys/new' onClick={handleNewSurveyClicked}>
 				<button className='button button-floating button-circle new-survey-button'>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'

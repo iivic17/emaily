@@ -10,17 +10,18 @@ const initialFormData = {
 const newFormSlice = createSlice({
 	name: 'newForm',
 	initialState: {
-		formData: initialFormData,
+		data: initialFormData,
 		reviewMode: false,
 	},
 	reducers: {
 		clearForm: state => {
-			state.formData = initialFormData;
+			state.data = initialFormData;
 		},
-		updateForm: (state, newData) => {
-			state.formData = newData;
+		updateForm: (state, action) => {
+			state.data = action.payload;
 		},
 	},
 });
 
+export const { clearForm, updateForm } = newFormSlice.actions;
 export default newFormSlice.reducer;

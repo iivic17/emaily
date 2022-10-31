@@ -3,9 +3,15 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { validateEmail } from './../../../utils/validateEmail';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { updateForm } from './../../../store/newForm';
+
 import './SurveyForm.scss';
 
 const SurveyForm = () => {
+	const formData = useSelector(state => state.newForm.data);
+	const dispatch = useDispatch();
+
 	const {
 		register,
 		handleSubmit,
@@ -13,14 +19,12 @@ const SurveyForm = () => {
 	} = useForm({
 		mode: 'onTouched',
 		defaultValues: {
-			surveySubject: '',
-			surveyTitle: '',
-			emailBody: '',
-			recipientList: '',
+			...formData,
 		},
 	});
+
 	const onSubmit = data => {
-		console.log(data);
+		dispatch(updateForm(data));
 	};
 
 	return (

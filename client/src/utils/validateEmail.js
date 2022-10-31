@@ -9,9 +9,6 @@ export const validateEmail = recipients => {
 		.map(email => email.trim())
 		.filter(email => !re.test(email));
 
-	console.log(recipients);
-	console.log(invalidEmails);
-
 	if (invalidEmails.length === 0) return true;
 
 	if (invalidEmails[0] === '') return 'Trailing commas are not allowed';
