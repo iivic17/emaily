@@ -23,6 +23,11 @@ html {
 	margin: 0;
 }
 
+*:focus {
+	outline: none;
+	box-shadow: 0 0 0 0.7rem #8ec5fc71;
+}
+
 .container {
 	max-width: 130em;
 	margin: 0 auto;
@@ -66,7 +71,7 @@ html {
 
 	margin: 0.4rem;
 
-	transition: all 0.3s ease-in-out;
+	transition: all 0.2s ease-in-out;
 }
 
 .button::after {
@@ -83,7 +88,7 @@ html {
 }
 
 .button:hover {
-	background-color: rgb(255, 255, 255, 0.92);
+	box-shadow: 0 0 0 0.7rem #8ec5fc71;
 }
 
 .button-floating {
