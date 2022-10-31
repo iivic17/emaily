@@ -1,11 +1,15 @@
 import React from 'react';
 import SurveyForm from './../SurveyForm';
+import { useSelector } from 'react-redux';
+import SurveyReview from './../SurveyReview';
+
+import './SurveyNew.scss';
 
 const SurveyNew = () => {
+	const reviewMode = useSelector(state => state.newForm.reviewMode);
+
 	return (
-		<div>
-			<SurveyForm />
-		</div>
+		<div className='survey-new'>{reviewMode ? <SurveyReview /> : <SurveyForm />}</div>
 	);
 };
 
