@@ -2,15 +2,35 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Dashboard.scss';
 
-import { useDispatch } from 'react-redux';
-import { clearForm } from './../../store/newForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { turnOffReviewMode } from './../../store/newForm';
 
 const Dashboard = () => {
 	const dispatch = useDispatch();
 
+	const editMode = useSelector(state => !state.newForm.isEmpty);
+
 	const handleNewSurveyClicked = () => {
-		dispatch(clearForm());
+		dispatch(turnOffReviewMode());
 	};
+
+	const editIcon = (
+		<>
+			<path
+				d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'
+				stroke='url(#primary-gradient)'></path>
+			<path
+				d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'
+				stroke='url(#primary-gradient)'></path>
+		</>
+	);
+
+	const newIcon = (
+		<>
+			<line x1='12' y1='5' x2='12' y2='19' stroke='url(#primary-gradient)'></line>
+			<line x1='5' y1='12' x2='19' y2='12' stroke='url(#primary-gradient)'></line>
+		</>
+	);
 
 	return (
 		<div>
@@ -22,7 +42,7 @@ const Dashboard = () => {
 						height='40'
 						viewBox='0 0 24 24'
 						fill='none'
-						strokeWidth='4'
+						strokeWidth='3'
 						strokeLinecap='round'
 						strokeLinejoin='round'
 						className='feather feather-plus'>
@@ -35,18 +55,7 @@ const Dashboard = () => {
 								<stop offset='100%' stopColor='#e0c3fc' />
 							</linearGradient>
 						</defs>
-						<line
-							x1='12'
-							y1='5'
-							x2='12'
-							y2='19'
-							stroke='url(#primary-gradient)'></line>
-						<line
-							x1='5'
-							y1='12'
-							x2='19'
-							y2='12'
-							stroke='url(#primary-gradient)'></line>
+						{editMode ? editIcon : newIcon}
 					</svg>
 				</button>
 			</Link>

@@ -1,7 +1,21 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { turnOffReviewMode } from './../../../store/newForm';
 
 const SurveyReview = () => {
-	return <h1>Survey review</h1>;
+	const dispatch = useDispatch();
+
+	const handleCancelClick = () => {
+		dispatch(turnOffReviewMode());
+	};
+
+	return (
+		<div className='survey-review'>
+			<button className='button button-full-width' onClick={handleCancelClick}>
+				Cancel
+			</button>
+		</div>
+	);
 };
 
 export default SurveyReview;

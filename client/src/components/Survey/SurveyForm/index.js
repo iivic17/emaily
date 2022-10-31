@@ -4,7 +4,7 @@ import { ErrorMessage } from '@hookform/error-message';
 import { validateEmail } from './../../../utils/validateEmail';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { updateForm } from './../../../store/newForm';
+import { turnOnReviewMode, updateForm } from './../../../store/newForm';
 
 import './SurveyForm.scss';
 
@@ -25,6 +25,7 @@ const SurveyForm = () => {
 
 	const onSubmit = data => {
 		dispatch(updateForm(data));
+		dispatch(turnOnReviewMode());
 	};
 
 	return (
