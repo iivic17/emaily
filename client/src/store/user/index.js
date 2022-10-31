@@ -10,8 +10,8 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async preloadedRes =
 export const handleToken = createAsyncThunk(
 	'user/handleToken',
 	async (token, { dispatch }) => {
-		const { updatingCredits } = userSlice.actions;
-		dispatch(updatingCredits());
+		const { loadCredits } = userSlice.actions;
+		dispatch(loadCredits());
 
 		const res = await axios.post('/api/stripe', token);
 		dispatch(fetchUser(res));
@@ -31,7 +31,7 @@ const userSlice = createSlice({
 		},
 	},
 	reducers: {
-		updatingCredits: state => {
+		loadCredits: state => {
 			state.credits.loading = true;
 		},
 	},

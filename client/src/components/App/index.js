@@ -17,6 +17,7 @@ class App extends Component {
 		console.info('Current state in redux store:');
 		console.log('LOGGED_IN', this.props.state.user.loggedIn);
 		console.log('CREDITS', this.props.state.user.credits);
+		console.log('NEW_FORM_REDUCER', this.props.state.newForm);
 
 		return (
 			<div>
