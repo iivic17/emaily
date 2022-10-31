@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { turnOffReviewMode } from './../../../store/newForm';
+import { turnOffReviewMode } from '../../../store/newForm';
 
 const SurveyReview = () => {
 	const dispatch = useDispatch();

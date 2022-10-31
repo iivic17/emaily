@@ -1,7 +1,7 @@
 import React from 'react';
 import SurveyForm from './../SurveyForm';
 import { useSelector } from 'react-redux';
-import SurveyReview from './../SurveyReview';
+import SurveyReview from '../SurveyFormReview';
 
 import './SurveyNew.scss';
 

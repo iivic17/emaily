@@ -15,6 +15,7 @@ const SurveyForm = () => {
 	const {
 		register,
 		handleSubmit,
+
 		formState: { errors },
 	} = useForm({
 		mode: 'onTouched',

@@ -10,11 +10,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-
-	@media screen and (max-width: 64em) {
-		flex-direction: column;
-		gap: 4.8rem;
-	}
 }
 
 .header-content {
@@ -22,19 +17,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	gap: 8rem;
-
-	@media screen and (max-width: 64em) {
-		flex-direction: column;
-		gap: 3.2rem;
-	}
-}
-
-.credits-group {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 2.4rem;
+	gap: 3.2rem;
 }
 
 .button-group {
@@ -49,14 +32,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 1rem;
-}
-
-.credits {
-	font-size: 2rem;
-	text-transform: uppercase;
-	letter-spacing: 0.3rem;
-	font-weight: 700;
+	gap: 0.6rem;
 }
 
 .credits-amount {
@@ -64,7 +40,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 32px;
+	width: auto;
 	height: 32px;
 }
 

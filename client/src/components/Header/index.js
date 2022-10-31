@@ -60,18 +60,15 @@ class Header extends Component {
 			default:
 				return (
 					<div className='header-content'>
-						<div className='credits-group'>
-							<span className='credits gradient-text'>Credits</span>
-							<div className='credits-value-group'>
-								<span className='credits-amount bold'>
-									{this.renderCreditsAmount()}
-								</span>
-								<img
-									src='/coin.png'
-									alt='credits-icon'
-									className='credits-icon'
-								/>
-							</div>
+						<div className='credits-value-group'>
+							<span className='credits-amount bold'>
+								{this.renderCreditsAmount()}
+							</span>
+							<img
+								src='/coin.png'
+								alt='credits-icon'
+								className='credits-icon'
+							/>
 						</div>
 						<div className='button-group'>
 							<Payments />
