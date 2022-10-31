@@ -13,17 +13,17 @@ const Dashboard = () => {
 						height='40'
 						viewBox='0 0 24 24'
 						fill='none'
-						stroke-width='4'
-						stroke-linecap='round'
-						stroke-linejoin='round'
-						class='feather feather-plus'>
+						strokeWidth='4'
+						strokeLinecap='round'
+						strokeLinejoin='round'
+						className='feather feather-plus'>
 						<defs>
 							<linearGradient
 								id='primary-gradient'
 								gradientUnits='userSpaceOnUse'
 								gradientTransform='rotate(62)'>
-								<stop offset='0%' stop-color='#8ec5fc' />
-								<stop offset='100%' stop-color='#e0c3fc' />
+								<stop offset='0%' stopColor='#8ec5fc' />
+								<stop offset='100%' stopColor='#e0c3fc' />
 							</linearGradient>
 						</defs>
 						<line
