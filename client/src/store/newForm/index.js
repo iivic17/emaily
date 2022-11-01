@@ -17,7 +17,7 @@ const initialState = {
 
 export const submitForm = createAsyncThunk(
 	'newForm/submitForm',
-	async (_, { dispatch, getState }) => {
+	async (history, { dispatch, getState }) => {
 		const { data } = getState().newForm;
 
 		console.log('ASYNC_THUNK_STATE', data);
@@ -31,6 +31,8 @@ export const submitForm = createAsyncThunk(
 
 		const res = await axios.post('/api/surveys', strData);
 		dispatch(fetchUser(res));
+
+		return { history };
 	}
 );
 
@@ -57,7 +59,13 @@ const newFormSlice = createSlice({
 	extraReducers: builder => {
 		builder.addCase(submitForm.pending, (state, action) => {});
 
-		builder.addCase(submitForm.fulfilled, (state, action) => {});
+		builder.addCase(submitForm.fulfilled, (state, action) => {
+			console.log('ACTION_PAYLOAD', action.payload);
+
+			const { history } = action.payload;
+
+			history.push('/surveys');
+		});
 
 		builder.addCase(submitForm.rejected, (state, action) => {});
 	},

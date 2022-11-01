@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { submitForm, turnOffReviewMode } from './../../../store/newForm';
 import './SurveyReview.scss';
 
@@ -8,13 +9,14 @@ const SurveyReview = () => {
 	const { surveySubject, surveyTitle, emailBody, recipientList } = useSelector(
 		state => state.newForm.data
 	);
+	const history = useHistory();
 
 	const handleCancelClick = () => {
 		dispatch(turnOffReviewMode());
 	};
 
 	const handleSendMailClick = () => {
-		dispatch(submitForm());
+		dispatch(submitForm(history));
 	};
 
 	return (
