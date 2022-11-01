@@ -39,6 +39,13 @@ html {
 	}
 }
 
+a:visited,
+a:link,
+a:active {
+	text-decoration: none;
+	color: #3d3d3d;
+}
+
 .gradient-text {
 	background: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
 	-webkit-background-clip: text;

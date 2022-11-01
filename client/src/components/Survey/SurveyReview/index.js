@@ -11,9 +11,14 @@ const SurveyReview = () => {
 
 	return (
 		<div className='survey-review'>
-			<button className='button button-full-width' onClick={handleCancelClick}>
-				Cancel
-			</button>
+			<div className='survey-button-group'>
+				<button className='button button-full-width' onClick={handleCancelClick}>
+					Back
+				</button>
+				<button className='button button-full-width' onClick={handleCancelClick}>
+					Send Mail
+				</button>
+			</div>
 		</div>
 	);
 };

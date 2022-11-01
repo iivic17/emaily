@@ -1,22 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialFormData = {
+const initialFormState = {
 	surveySubject: '',
 	surveyTitle: '',
 	emailBody: '',
 	recipientList: '',
 };
 
+const initialState = {
+	data: initialFormState,
+	reviewMode: false,
+	isEmpty: true,
+};
+
 const newFormSlice = createSlice({
 	name: 'newForm',
-	initialState: {
-		data: initialFormData,
-		reviewMode: false,
-		isEmpty: true,
-	},
+	initialState,
 	reducers: {
 		clearForm: state => {
-			state.data = initialFormData;
+			state.data = initialFormState;
+			state.reviewMode = false;
 			state.isEmpty = true;
 		},
 		updateForm: (state, action) => {

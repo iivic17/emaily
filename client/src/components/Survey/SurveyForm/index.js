@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import { validateEmail } from './../../../utils/validateEmail';
-
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { turnOnReviewMode, updateForm } from './../../../store/newForm';
 
@@ -11,6 +11,7 @@ import './SurveyForm.scss';
 const SurveyForm = () => {
 	const formData = useSelector(state => state.newForm.data);
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const {
 		register,
@@ -148,9 +149,17 @@ const SurveyForm = () => {
 				</div>
 			</div>
 
-			<button className='button button-full-width survey-form-button' type='submit'>
-				Next
-			</button>
+			<div className='survey-button-group'>
+				<button
+					className='button  survey-form-button'
+					type='button'
+					onClick={() => history.push('/surveys')}>
+					Cancel
+				</button>
+				<button className='button  survey-form-button' type='submit'>
+					Next
+				</button>
+			</div>
 		</form>
 	);
 };
