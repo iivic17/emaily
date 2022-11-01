@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { turnOffReviewMode } from './../../../store/newForm';
+import { submitForm, turnOffReviewMode } from './../../../store/newForm';
 import './SurveyReview.scss';
 
 const SurveyReview = () => {
@@ -11,6 +11,10 @@ const SurveyReview = () => {
 
 	const handleCancelClick = () => {
 		dispatch(turnOffReviewMode());
+	};
+
+	const handleSendMailClick = () => {
+		dispatch(submitForm());
 	};
 
 	return (
@@ -59,7 +63,7 @@ const SurveyReview = () => {
 				<button className='button survey-button' onClick={handleCancelClick}>
 					Back
 				</button>
-				<button className='button survey-button' onClick={handleCancelClick}>
+				<button className='button survey-button' onClick={handleSendMailClick}>
 					Send Mail
 				</button>
 			</div>

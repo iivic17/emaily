@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { fetchUser } from './../user';
 
 const initialFormState = {
 	surveySubject: '',
@@ -12,6 +14,25 @@ const initialState = {
 	reviewMode: false,
 	isEmpty: true,
 };
+
+export const submitForm = createAsyncThunk(
+	'newForm/submitForm',
+	async (_, { dispatch, getState }) => {
+		const { data } = getState().newForm;
+
+		console.log('ASYNC_THUNK_STATE', data);
+
+		const strData = {
+			title: data.surveyTitle,
+			subject: data.surveyTitle,
+			body: data.emailBody,
+			recipients: data.recipientList,
+		};
+
+		const res = await axios.post('/api/surveys', strData);
+		dispatch(fetchUser(res));
+	}
+);
 
 const newFormSlice = createSlice({
 	name: 'newForm',
@@ -32,6 +53,13 @@ const newFormSlice = createSlice({
 		turnOffReviewMode: state => {
 			state.reviewMode = false;
 		},
+	},
+	extraReducers: builder => {
+		builder.addCase(submitForm.pending, (state, action) => {});
+
+		builder.addCase(submitForm.fulfilled, (state, action) => {});
+
+		builder.addCase(submitForm.rejected, (state, action) => {});
 	},
 });
 
