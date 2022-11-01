@@ -151,12 +151,12 @@ const SurveyForm = () => {
 
 			<div className='survey-button-group'>
 				<button
-					className='button  survey-form-button'
+					className='button survey-button'
 					type='button'
 					onClick={() => history.push('/surveys')}>
 					Cancel
 				</button>
-				<button className='button  survey-form-button' type='submit'>
+				<button className='button survey-button' type='submit'>
 					Next
 				</button>
 			</div>
