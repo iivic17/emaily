@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { turnOnReviewMode, updateForm } from './../../../store/newForm';
+import { clearForm, turnOnReviewMode, updateForm } from './../../../store/newForm';
 import { formConfig } from './formConfig';
 import SurveyFormItem from '../SurveyFormItem';
 import './SurveyForm.scss';
@@ -27,6 +27,10 @@ const SurveyForm = () => {
 	const onSubmit = data => {
 		dispatch(updateForm(data));
 		dispatch(turnOnReviewMode());
+	};
+
+	const handleClearFormClicked = () => {
+		dispatch(clearForm());
 	};
 
 	const renderFields = () => {
@@ -60,6 +64,12 @@ const SurveyForm = () => {
 					Next
 				</button>
 			</div>
+
+			<span
+				onClick={handleClearFormClicked}
+				className='gradient-text uppercase clear-form-text'>
+				Clear form
+			</span>
 		</form>
 	);
 };
