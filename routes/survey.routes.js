@@ -79,4 +79,8 @@ module.exports = app => {
 
 		res.send({});
 	});
+
+	app.get('/api/surveys/:surveyId/:choice', (req, res) => {
+		res.send('Thanks for voting!');
+	});
 };
