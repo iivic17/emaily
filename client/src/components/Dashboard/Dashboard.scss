@@ -1,8 +1,16 @@
 .dashboard {
+	width: 100%;
 }
 
 .new-survey-button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.survey:not(:last-child) {
+	margin-bottom: 2rem;
+	font-size: 1.8rem;
+	color: #a4a7b6;
+	line-height: 1.7;
 }

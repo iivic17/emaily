@@ -95,6 +95,12 @@ a:active {
 	text-transform: uppercase;
 }
 
+.fixed-bottom-right {
+	position: fixed;
+	bottom: 8rem;
+	right: 8rem;
+}
+
 .button {
 	border: none;
 	background-color: transparent;
@@ -133,12 +139,6 @@ a:active {
 
 .button:hover {
 	box-shadow: 0 0 0 0.7rem #8ec5fc71;
-}
-
-.button-floating {
-	position: absolute;
-	bottom: 8rem;
-	right: 8rem;
 }
 
 .button-circle {
