@@ -20,8 +20,6 @@ export const submitForm = createAsyncThunk(
 	async (history, { dispatch, getState }) => {
 		const { data } = getState().newForm;
 
-		console.log('ASYNC_THUNK_STATE', data);
-
 		const strData = {
 			title: data.surveyTitle,
 			subject: data.surveyTitle,
@@ -60,8 +58,6 @@ const newFormSlice = createSlice({
 		builder.addCase(submitForm.pending, (state, action) => {});
 
 		builder.addCase(submitForm.fulfilled, (state, action) => {
-			console.log('ACTION_PAYLOAD', action.payload);
-
 			const { history } = action.payload;
 
 			history.push('/surveys');

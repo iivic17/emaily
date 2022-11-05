@@ -8,13 +8,10 @@ import { clearForm } from './../../../store/newForm';
 
 const SurveyNew = () => {
 	const reviewMode = useSelector(state => state.newForm.reviewMode);
-	const state = useSelector(state => state.newForm);
-	console.log('STATE', state);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		return () => {
-			console.log('CALLED');
 			dispatch(clearForm());
 		};
 	}, [dispatch]);
