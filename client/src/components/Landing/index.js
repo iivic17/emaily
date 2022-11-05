@@ -4,10 +4,13 @@ import './Landing.scss';
 const Landing = () => {
 	return (
 		<div className='landing'>
-			<h2>Collect feedback from your users</h2>
-			<p>
-				Zero spam, no bots, and not one fake follower. Let us find your audience.
-			</p>
+			<h2 className='landing-heading'>
+				We Ignite Your <span className='heading-underline'>Ideas</span>,
+				<br />
+				Push Your <span className='heading-underline'>Boundaries</span>
+				<br />
+				Value Your <span className='heading-underline'>Partnership</span>,
+			</h2>
 		</div>
 	);
 };

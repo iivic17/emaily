@@ -3,13 +3,33 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	margin-top: 20rem;
+
+	align-self: baseline;
 }
 
-.landing > h2 {
-	font-size: 3.2rem;
+.landing-heading {
+	letter-spacing: 0.24rem;
+	font-weight: 800;
+	font-size: 6rem;
+	text-align: left;
+	line-height: 1.4;
 }
 
-.landing > p {
-	font-size: 1.8rem;
+.heading-underline {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: -1rem;
+		left: -0.5rem;
+		right: 1.5rem;
+		height: 2rem;
+		z-index: -1;
+
+		background-image: url('/images/underline.png');
+		background-repeat: no-repeat;
+
+		background-size: cover;
+	}
 }
