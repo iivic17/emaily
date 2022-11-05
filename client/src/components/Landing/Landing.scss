@@ -1,14 +1,15 @@
-.landing-text-box {
+.landing {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	margin-top: 20rem;
 }
 
-.landing-text-box > h2 {
+.landing > h2 {
 	font-size: 3.2rem;
 }
 
-.landing-text-box > p {
+.landing > p {
 	font-size: 1.8rem;
 }

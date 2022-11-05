@@ -7,7 +7,7 @@ import { PlusIcon } from '../../Icons/PlusIcon';
 
 const Dashboard = () => {
 	return (
-		<div>
+		<div className='dashboard'>
 			<Link to='/surveys/new'>
 				<button className='button button-floating button-circle new-survey-button'>
 					<SvgDef>
