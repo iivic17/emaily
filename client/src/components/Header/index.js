@@ -40,13 +40,13 @@ class Header extends Component {
 				return (
 					<div className='button-group'>
 						<button
-							className='button'
+							className='button button-nav'
 							onClick={this.onSignInWithGoogle.bind(this)}>
 							Sign in with{' '}
 							<span className='gradient-text bold uppercase'>Google</span>
 						</button>
 						<button
-							className='button'
+							className='button button-nav'
 							onClick={this.onSignInWithFacebook.bind(this)}>
 							Sign in with{' '}
 							<span
@@ -73,7 +73,7 @@ class Header extends Component {
 						<div className='button-group'>
 							<Payments />
 							<button
-								className='button'
+								className='button button-nav'
 								onClick={this.onSignOut.bind(this)}>
 								Sign out
 							</button>

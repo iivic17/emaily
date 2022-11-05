@@ -18,7 +18,7 @@ class Payments extends Component {
 				token={token => this.onTokenCallback(token)}
 				panelLabel='Buy (5) credits for'
 				stripeKey={process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY}>
-				<button className='button button-reversed'>
+				<button className='button button-nav'>
 					Buy <span className='gradient-text bold uppercase'>credits</span>
 				</button>
 			</StripeCheckout>
