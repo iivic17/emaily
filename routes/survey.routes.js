@@ -3,7 +3,8 @@ const requireCredits = require('./../middlewares/requireCredits');
 const requireLogin = require('./../middlewares/requireLogin');
 const Mailer = require('./../services/Mailer');
 const surveyTemplate = require('./../services/emailTemplates/surveyTemplate');
-
+const { Path } = require('path-parser');
+const { URL } = require('url');
 const Survey = mongoose.model('surveys');
 
 module.exports = app => {
@@ -32,5 +33,50 @@ module.exports = app => {
 		} catch (error) {
 			res.status(422).send(error);
 		}
+	});
+
+	app.post('/api/surveys/webhooks', (req, res) => {
+		const path = new Path('/api/surveys/:surveyId/:choice');
+
+		req.body
+			.map(({ email, url }) => {
+				const match = path.test(new URL(url).pathname);
+
+				if (match) {
+					return {
+						email,
+						surveyId: match.surveyId,
+						choice: match.choice,
+					};
+				}
+			})
+			.filter(entry => {
+				if (entry?.email && entry?.surveyId && entry?.choice) return true;
+			})
+			.filter(function ({ email, surveyId }) {
+				const key = `${email}|${surveyId}`;
+
+				if (!this[key]) {
+					this[key] = true;
+					return true;
+				}
+			}, Object.create(null))
+			.forEach(({ surveyId, email, choice }) => {
+				Survey.updateOne(
+					{
+						_id: surveyId,
+						recipients: {
+							$elemMatch: { email: email, hasRasponded: false },
+						},
+					},
+					{
+						$inc: { [choice]: 1 },
+						$set: { 'recipients.$.hasRasponded': true },
+						lastResponded: new Date(),
+					}
+				).exec();
+			});
+
+		res.send({});
 	});
 };
