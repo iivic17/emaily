@@ -1,14 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { ErrorMessage } from '@hookform/error-message';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { turnOnReviewMode, updateForm } from './../../../store/newForm';
-
-import './SurveyForm.scss';
-import SurveyInput from '../SurveyInput';
-import SurveyFormItem from '../SurveyFormItem';
 import { formConfig } from './formConfig';
+import SurveyFormItem from '../SurveyFormItem';
+import './SurveyForm.scss';
 
 const SurveyForm = () => {
 	const formData = useSelector(state => state.newForm.data);

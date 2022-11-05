@@ -47,6 +47,11 @@ const newFormSlice = createSlice({
 			state.data = action.payload;
 			state.isEmpty = false;
 		},
+		updateFormItem: (state, action) => {
+			const { name, value } = action.payload;
+
+			state.data[name] = value;
+		},
 		turnOnReviewMode: state => {
 			state.reviewMode = true;
 		},
@@ -67,6 +72,11 @@ const newFormSlice = createSlice({
 	},
 });
 
-export const { clearForm, updateForm, turnOnReviewMode, turnOffReviewMode } =
-	newFormSlice.actions;
+export const {
+	clearForm,
+	updateForm,
+	updateFormItem,
+	turnOnReviewMode,
+	turnOffReviewMode,
+} = newFormSlice.actions;
 export default newFormSlice.reducer;
