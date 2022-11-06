@@ -4,6 +4,7 @@ import axios from 'axios';
 export const fetchUser = createAsyncThunk('user/fetchUser', async preloadedRes => {
 	if (preloadedRes) return preloadedRes.data;
 	const res = await axios.get('/api/current_user');
+
 	return res.data;
 });
 

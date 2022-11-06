@@ -1,39 +1,40 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './../Header';
 import Landing from './../Landing';
 import './App.scss';
-import * as actions from './../../store/user';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Dashboard from './../Dashboard';
 import SurveyNew from '../Survey/SurveyNew';
+import { PrivateRoute } from './PrivateRoute';
+import { fetchUser } from '../../store/user';
+import { PublicRoute } from './PublicRoute';
 
-class App extends Component {
-	componentDidMount() {
-		this.props.fetchUser();
-	}
+const App = () => {
+	const dispatch = useDispatch();
 
-	render() {
-		return (
-			<div>
-				<BrowserRouter>
-					<div className='container'>
-						<Header />
-						<div className='main-content-container'>
+	useEffect(() => {
+		dispatch(fetchUser());
+	}, [dispatch]);
 
+	return (
+		<BrowserRouter>
+			<div className='container'>
+				<Header />
+				<div className='main-content-container'>
+					<PublicRoute>
 						<Route exact path='/' component={Landing} />
+					</PublicRoute>
+					<PrivateRoute>
 						<Route exact path='/surveys' component={Dashboard} />
+					</PrivateRoute>
+					<PrivateRoute>
 						<Route exact path='/surveys/new' component={SurveyNew} />
-						</div>
-					</div>
-				</BrowserRouter>
+					</PrivateRoute>
+				</div>
 			</div>
-		);
-	}
-}
+		</BrowserRouter>
+	);
+};
 
-const mapStateToProps = state => ({
-	state,
-});
-
-export default connect(mapStateToProps, actions)(App);
+export default App;
